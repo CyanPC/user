@@ -15,7 +15,7 @@ public class UserConverter {
 
     public User toUser(UserDTO userDTO){
         return User.builder()
-                .name(UserDTO.getName())
+                .name(userDTO.getName())
                 .email(userDTO.getEmail())
                 .password(userDTO.getPassword())
                 .addresses(toAddressList(userDTO.getAddresses()))
@@ -50,18 +50,18 @@ public class UserConverter {
                 .build();
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public UserDTO toUserDTO(User userDTO){
-        return User.builder()
-                .name(userDTO.getName())
-                .email(userDTO.getEmail())
-                .password(userDTO.getPassword())
-                .addresses(toAddressList(userDTO.getAddresses()))
-                .phones(toPhoneList(userDTO.getPhones()))
+    public UserDTO toUserDTO(User user){
+        return UserDTO.builder()
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .addresses(toAddressListDTO(user.getAddresses()))
+                .phones(toPhoneListDTO(user.getPhones()))
                 .build();
 
     }
     public List<AddressDTO> toAddressListDTO(List<Address> addressDTOS){
-        return addressDTOS.stream().map(this::toAddress).toList();
+        return addressDTOS.stream().map(this::toAddressDTO).toList();
     }
 
     public AddressDTO toAddressDTO(Address addressDTO){

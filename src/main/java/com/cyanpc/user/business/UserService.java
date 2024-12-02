@@ -15,7 +15,7 @@ public class UserService {
     private final UserConverter userConverter;
 
     public UserDTO saveUser(UserDTO userDTO){
-        User user = userConverter.toUser(UserDTO);
+        User user = userConverter.toUser(userDTO);
         return userConverter.toUserDTO(userRepository.save(user));
     }
 }
