@@ -1,7 +1,10 @@
 package com.cyanpc.user.controller;
 
 import com.cyanpc.user.business.UserService;
+import com.cyanpc.user.business.dto.AddressDTO;
+import com.cyanpc.user.business.dto.PhoneDTO;
 import com.cyanpc.user.business.dto.UserDTO;
+import com.cyanpc.user.infrastructure.entity.Address;
 import com.cyanpc.user.infrastructure.entity.User;
 import com.cyanpc.user.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<User> findUserByEmail(@RequestParam("email")String email){
+    public ResponseEntity<UserDTO> findUserByEmail(@RequestParam("email")String email){
         return  ok(userService.findUserByEmail(email));
     }
 
@@ -46,5 +49,18 @@ public class UserController {
         return ResponseEntity.ok("User executed.");
     }
 
+    @PutMapping
+    public ResponseEntity<UserDTO> updateUserData(@RequestBody UserDTO dto, @RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(userService.updateUserData(token, dto));
+    }
+
+    @PutMapping("/address")
+    public ResponseEntity<AddressDTO> updateAddress(@RequestBody AddressDTO dto, @RequestParam("id") Long id) {
+        return ResponseEntity.ok(userService.updateAddress(id, dto));
+    }
+    @PutMapping("/phone")
+    public ResponseEntity<PhoneDTO> updateAddress(@RequestBody PhoneDTO dto, @RequestParam("id") Long id) {
+        return ResponseEntity.ok(userService.updatePhone(id, dto));
+    }
 }
 

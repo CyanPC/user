@@ -1,6 +1,5 @@
 package com.cyanpc.user.business.dto;
 
-import jakarta.persistence.Column;
 import lombok.*;
 
 @Getter
@@ -10,6 +9,7 @@ import lombok.*;
 @Builder
 public class AddressDTO {
 
+    private Long id;
     private String addressLine1;
     private String number;
     private String addressLine2;
