@@ -19,4 +19,6 @@ public class Phone {
     private String number;
     @Column(name = "ddi", length = 4)
     private String ddi;
+    @Column(name = "user_id")
+    private Long user_id;
 }

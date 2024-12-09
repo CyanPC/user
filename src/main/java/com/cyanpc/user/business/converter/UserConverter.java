@@ -124,4 +124,26 @@ public class UserConverter {
                 .build();
 
     }
+
+    public Address toAddressEntity(AddressDTO dto, Long id){
+        return Address.builder()
+                .addressLine1(dto.getAddressLine1())
+                .number(dto.getNumber())
+                .addressLine2(dto.getAddressLine2())
+                .city(dto.getCity())
+                .state(dto.getState())
+                .zip(dto.getZip())
+                .country(dto.getCountry())
+                .user_id(id)
+                .build();
+    }
+
+    public Phone toPhoneEntity(PhoneDTO dto, Long id){
+        return Phone.builder()
+                .number(dto.getNumber())
+                .ddi(dto.getDdi())
+                .user_id(id)
+                .build();
+
+    }
 }

@@ -14,6 +14,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.stream.events.EndElement;
+
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
@@ -61,6 +63,14 @@ public class UserController {
     @PutMapping("/phone")
     public ResponseEntity<PhoneDTO> updateAddress(@RequestBody PhoneDTO dto, @RequestParam("id") Long id) {
         return ResponseEntity.ok(userService.updatePhone(id, dto));
+    }
+    @PostMapping("/address")
+    public ResponseEntity<AddressDTO> insertAddress(@RequestBody AddressDTO dto, @RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(userService.insertAddress(token, dto));
+    }
+    @PostMapping("/phone")
+    public ResponseEntity<PhoneDTO> insertPhone(@RequestBody PhoneDTO dto, @RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(userService.insertPhone(token, dto));
     }
 }
 

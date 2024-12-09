@@ -28,4 +28,6 @@ public class Address {
     private String zip;
     @Column(name = "country")
     private String country;
+    @Column(name = "user_id")
+    private Long user_id;
 }
