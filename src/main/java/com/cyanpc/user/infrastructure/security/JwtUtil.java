@@ -12,7 +12,7 @@ import java.util.Date;
 @Service
 public class JwtUtil {
 
-    private final String secretKey = "sua-chave-secreta-super-segura-que-deve-ser-bem-longa";
+    private final String secretKey = "your-super-secure-secret-key-that-must-be-really-long";
 
 
 
