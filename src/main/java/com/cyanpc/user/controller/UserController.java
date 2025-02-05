@@ -36,13 +36,13 @@ public class UserController {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(userDTO.getEmail(),
                         userDTO.getPassword())
-        ); //sad face
+        );
         return "Bearer " + jwtUtil.generateToken(authentication.getName());
     }
 
     @GetMapping
     public ResponseEntity<UserDTO> findUserByEmail(@RequestParam("email")String email){
-        return  ok(userService.findUserByEmail(email));
+        return  ResponseEntity.ok(userService.findUserByEmail(email));
     }
 
     @DeleteMapping("/{email}")
